@@ -15,7 +15,7 @@ def summarize_text(text):
         completion = client.chat.completions.create(
             model="gpt-4o-mini",  
             messages=[
-                {"role": "system", "content": "Summarize the following lecture text briefly. Give the sub heading rellated to the content and give summary points below"},
+                {"role": "system", "content": "Summarize the following lecture text, focusing on core engineering and science subjects and concepts. Provide subheadings based on the main topics covered in the content. Under each subheading, list summary points concisely. Exclude any irrelevant information or tangential details."},
                 {"role": "user", "content": text},
             ],
             max_tokens=400,  
