@@ -1,0 +1,10 @@
+selenium
+langchain
+openai
+groq
+python-dotenv
+tesseract
+pytesseract
+opencv-python
+cv
+pillow
