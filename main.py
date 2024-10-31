@@ -1,6 +1,7 @@
 import cv2
 import time
 import numpy as np
+import difflib
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -46,7 +47,14 @@ while True:
 previous_text = ""
 for frame in capture_frame(driver, interval=60):
     text = extract_text_from_frame(frame)
-    if text and text != previous_text:
-        summary = summarize_text(text)
-        print("Summary:", summary)
-        previous_text = text
+    SIMILARITY_THRESHOLD = 0.6
+
+# Check if the new text is significantly different from previous text
+    if text:
+        similarity = difflib.SequenceMatcher(None, text, previous_text).ratio()
+        if similarity < SIMILARITY_THRESHOLD:
+            summary = summarize_text(text)
+            print("Summary:", summary)
+            previous_text = text
+        
+def summarize_text(text):
