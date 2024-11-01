@@ -4,9 +4,8 @@ from dotenv import load_dotenv,find_dotenv
 
 api_key = os.getenv("OPENAI_API_KEY")
 
-client = OpenAI(
-    api_key = "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"
-)
+client = OpenAI(api_key)
+
 
 def summarize_text(text):
 
